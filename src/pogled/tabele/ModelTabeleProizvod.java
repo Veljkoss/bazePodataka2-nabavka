@@ -50,5 +50,12 @@ public class ModelTabeleProizvod extends AbstractTableModel{
     public Class<?> getColumnClass(int columnIndex) {
         return columnClasses[columnIndex];
     }
+
+    @Override
+    public String getColumnName(int column) {
+        return columnNames[column];
+    }
+    
+    
     
 }

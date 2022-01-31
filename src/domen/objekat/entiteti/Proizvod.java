@@ -8,6 +8,7 @@ package domen.objekat.entiteti;
 import domen.objekat.DomenskiObjekat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -54,12 +55,12 @@ public class Proizvod extends DomenskiObjekat{
 
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "proizvod p";
     }
 
     @Override
     public String getAllColumnNames() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "p.proizvod_id, p.naziv, p.jm";
     }
 
     @Override
@@ -94,12 +95,26 @@ public class Proizvod extends DomenskiObjekat{
 
     @Override
     public List<DomenskiObjekat> getObjectsFromResultSet(ResultSet rs) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<DomenskiObjekat> proizvodi = new ArrayList();
+        
+        while(rs.next()){
+            long id = rs.getLong("proizvod_id");
+            String naziv = rs.getString("naziv");
+            String jedinicaMere  =rs.getString("jm");
+            Proizvod p = new Proizvod();
+            p.setProizvodId(id);
+            p.setNaziv(naziv);
+            p.setJedinicaMere(jedinicaMere);
+            
+            proizvodi.add(p);
+        }
+        
+        return proizvodi;
     }
 
     @Override
     public String getOrderByColumn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "p.proizvod_id";
     }
 
     public long getProizvodId() {

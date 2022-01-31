@@ -84,8 +84,8 @@ public class BrokerBP {
     }
     
     private void setDatabaseAccessParams() {
-        this.url = "jdbc:oracle:thin:@localhost:1521/orcl";
-        this.username = "system";
+        this.url = "jdbc:oracle:thin:@localhost:1521/orclpdb";
+        this.username = "veljko";
         this.password = "password";
     }
     

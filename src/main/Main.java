@@ -6,6 +6,7 @@
 package main;
 
 import baza.broker.DbConnection;
+import pogled.kontroleri.ProizvodKontroler;
 
 /**
  *
@@ -13,6 +14,7 @@ import baza.broker.DbConnection;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println(DbConnection.getConnection());
+        ProizvodKontroler pk = new ProizvodKontroler();
+        pk.initializeFrame();
     }
 }

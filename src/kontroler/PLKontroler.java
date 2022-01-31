@@ -10,6 +10,7 @@ import domen.objekat.DomenskiObjekat;
 import domen.objekat.entiteti.Proizvod;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -48,8 +49,12 @@ public class PLKontroler {
         brokerBP.disconnect();
     }
     
-   public List<Proizvod> getAllProizvodi(){
-       return null;
+   public List<Proizvod> getAllProizvodi() throws SQLException, Exception{
+       brokerBP.connect();
+       List<DomenskiObjekat> proizvodi = brokerBP.getAll(new Proizvod());
+       brokerBP.disconnect();
+       
+       return proizvodi.stream().map(Proizvod.class::cast).collect(Collectors.toList());
    } 
     
 }
